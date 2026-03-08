@@ -1,0 +1,361 @@
+/* ============================================================
+   APPENDICES PAGE — Official MoD Strict Document Styles
+   ============================================================ */
+
+/* ============ HERO SECTION ============ */
+.appendix-hero {
+  position: relative;
+  background: var(--navy-900); /* Змінено на суцільний темний мілітарі колір */
+  padding: calc(var(--header-height) + var(--space-4xl)) var(--space-xl) calc(var(--space-5xl) + var(--space-2xl));
+  text-align: center;
+  overflow: hidden;
+  border-bottom: 2px solid var(--accent-gold);
+}
+
+/* Військова сітка замість радіального градієнта */
+.appendix-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+
+.appendix-hero .hero-title {
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  margin-bottom: var(--space-sm);
+  text-transform: uppercase;
+}
+
+.appendix-hero .hero-subtitle {
+  color: var(--steel-300);
+  max-width: 640px;
+  font-size: 1rem;
+}
+
+/* ============ NAVIGATION GRID ============ */
+.appendix-nav {
+  max-width: 1100px;
+  margin: calc(var(--space-3xl) * -1) auto var(--space-4xl);
+  padding: 0 var(--space-xl);
+  position: relative;
+  z-index: 10;
+}
+
+.appendix-nav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-md);
+}
+
+.appendix-nav-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  background: var(--white);
+  border: 1px solid var(--steel-300);
+  border-radius: var(--radius-sm); /* Жорсткіші кути */
+  padding: var(--space-lg);
+  box-shadow: none; /* Прибрали тіні */
+  transition: all 0.2s ease;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Офіційний маркер ліворуч */
+.appendix-nav-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--steel-300);
+  transition: background 0.2s ease;
+}
+
+.appendix-nav-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--navy-500);
+}
+
+.appendix-nav-card:hover::before {
+  background: var(--navy-700);
+}
+
+.appendix-nav-card:hover h3 { color: var(--navy-900); }
+.appendix-nav-card:hover p { color: var(--graphite-700); }
+
+/* Stamp Style Lettering */
+.appendix-nav-stamp {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--accent-gold);
+  background: var(--navy-800);
+  border: none;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
+
+.appendix-nav-card h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy-900);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.appendix-nav-card p {
+  font-size: 0.85rem;
+  color: var(--graphite-600);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* ============ DOCUMENT HUB ============ */
+.appendix-hub {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 var(--space-xl) var(--space-4xl);
+}
+
+.appendix-section {
+  margin-bottom: var(--space-4xl);
+  scroll-margin-top: calc(var(--header-height) + var(--space-xl));
+}
+
+.document-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: var(--space-lg);
+  text-align: center;
+}
+
+.chapter-title {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--navy-900);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.appendix-subtitle {
+  color: var(--graphite-600);
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-md);
+}
+
+.btn-print {
+  font-size: 0.75rem;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm); /* Жорсткіші кнопки */
+}
+
+/* ============ THE PAPER FORM ============ */
+.document-paper {
+  background: #ffffff; /* Жодних градієнтів, просто білий аркуш */
+  color: #000000; 
+  padding: var(--space-3xl) var(--space-4xl);
+  border-radius: 0; /* Рівні кути */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Легка сувора тінь замість м'якої */
+  border: 1px solid var(--steel-300);
+  font-family: 'Merriweather', serif; 
+  position: relative;
+}
+
+.doc-align-right { 
+  text-align: right; 
+  margin-left: auto; 
+  max-width: 300px; 
+}
+
+/* STRICT CENTERING OVERRIDE */
+.doc-align-center { 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center !important; 
+}
+
+.doc-align-center p,
+.doc-align-center h4,
+.doc-align-center .block-title,
+.doc-align-center .doc-date {
+  text-align: center !important;
+  text-indent: 0 !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.block-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.block-title.inline { display: inline-block; margin-right: 8px; margin-bottom: 0; }
+
+.uppercase { text-transform: uppercase; }
+.text-lg { font-size: 1.25rem; letter-spacing: 0.05em; }
+.no-indent { text-indent: 0 !important; margin-bottom: 8px; }
+
+/* Fill-in Fields */
+.form-field { margin-bottom: var(--space-lg); }
+.form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl); }
+
+.field-line {
+  border-bottom: 1px solid #000000; /* Чорні лінії для підписів */
+  min-height: 24px;
+  width: 100%;
+  margin-bottom: 4px;
+}
+.field-line.multi-line { margin-bottom: 24px; }
+
+.doc-hint {
+  font-family: var(--font-ui); /* Змінено на UI шрифт для кращого читання */
+  font-size: 0.75rem;
+  color: var(--graphite-600);
+  text-align: center !important;
+  text-indent: 0 !important;
+  margin-top: 2px;
+}
+
+.doc-date { 
+  font-family: var(--font-ui); 
+  font-size: 0.9rem; 
+  margin-top: 8px; 
+  text-indent: 0 !important;
+}
+
+/* Signatures */
+.doc-footer-signature { margin-top: var(--space-2xl); }
+.signature-block { display: flex; align-items: flex-end; gap: var(--space-md); }
+.signature-block .label { font-family: var(--font-display); font-weight: 600; white-space: nowrap; margin-bottom: 20px; }
+.signature-line { border-bottom: 1px solid #000000; height: 20px; width: 100%; }
+
+/* Notices & Text Docs */
+.doc-notice {
+  border: 1px solid var(--steel-400);
+  padding: var(--space-md);
+  font-size: 0.85rem;
+  background: var(--off-white);
+  color: #000;
+}
+
+.text-document { font-size: 0.95rem; line-height: 1.6; }
+.doc-list-numbered { padding-left: var(--space-xl); margin-top: var(--space-lg); }
+.doc-list-numbered li { margin-bottom: var(--space-md); text-align: justify; }
+
+/* ============ CHECKLIST GRID (Додаток Г) ============ */
+.checklist-table {
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+  margin-top: var(--space-lg);
+  font-family: var(--font-ui);
+}
+
+.cl-header {
+  display: grid;
+  grid-template-columns: 40px 1fr 50px 50px;
+  border-bottom: 1px solid #000;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  padding: 10px 0;
+}
+
+.cl-row {
+  display: grid;
+  grid-template-columns: 40px 1fr 50px 50px;
+  border-bottom: 1px solid var(--steel-300);
+  padding: 12px 0;
+  align-items: center;
+}
+
+.cl-row:last-child { border-bottom: none; }
+.cl-col-num { font-weight: 600; color: #000; }
+.cl-col-task { padding-right: var(--space-md); font-family: 'Merriweather', serif; font-size: 0.9rem; line-height: 1.4; }
+.cl-col-check { display: flex; justify-content: center; }
+
+/* The physical checkbox square */
+.cl-box {
+  width: 18px;
+  height: 18px;
+  border: 1px solid #000;
+  border-radius: 0; /* Гострі кути для чекбоксів */
+  background: #FFFFFF;
+}
+
+/* Utility Classes */
+.mb-2 { margin-bottom: var(--space-xl); }
+.mt-1 { margin-top: var(--space-md); }
+.mt-2 { margin-top: var(--space-xl); }
+.mt-3 { margin-top: var(--space-2xl); }
+.flex-1 { flex: 1; }
+
+.appendix-back { text-align: center; margin-top: var(--space-md); }
+.appendix-back a { font-family: var(--font-ui); font-size: 0.8rem; font-weight: 700; color: var(--navy-500); text-transform: uppercase; }
+.appendix-back a:hover { color: var(--accent-gold); }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 768px) {
+  .appendix-hero { padding: calc(var(--header-height) + var(--space-2xl)) var(--space-md) calc(var(--space-4xl) + var(--space-xl)); }
+  .appendix-nav { padding: 0 var(--space-md); margin-top: calc(var(--space-2xl) * -1); }
+  .appendix-nav-grid { grid-template-columns: 1fr; }
+  
+  .document-paper { padding: var(--space-xl) var(--space-md); }
+  .form-grid-2 { grid-template-columns: 1fr; gap: var(--space-md); }
+  .doc-align-right { max-width: 100%; text-align: left; }
+  .signature-block { flex-direction: column; align-items: flex-start; gap: 0; }
+  .signature-block .label { margin-bottom: 0; }
+  .signature-block .flex-1 { width: 100%; }
+
+  /* Mobile Checklist Adjustment */
+  .cl-header, .cl-row { grid-template-columns: 30px 1fr 40px 40px; }
+  .cl-col-task { font-size: 0.8rem; padding-right: 8px; }
+  .cl-header { font-size: 0.75rem; }
+}
+
+/* ============ PRINT MEDIA QUERY ============ */
+@media print {
+  .site-header, .appendix-hero, .appendix-nav, .appendix-back, .site-footer, .btn-print {
+    display: none !important;
+  }
+  
+  body { background: white; color: black; }
+  
+  .appendix-hub { padding: 0; max-width: 100%; margin: 0; }
+  .appendix-section { margin: 0; padding: 0; page-break-after: always; box-shadow: none; }
+  
+  .document-paper {
+    box-shadow: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+  }
+  
+  .doc-notice { border: 1px solid black; background: transparent; }
+  .field-line, .signature-line, .cl-box { border-color: black; }
+  .checklist-table { border-color: black; }
+  .cl-header { border-bottom-color: black; }
+  .cl-row { border-bottom-color: #000; }
+}

@@ -1,0 +1,185 @@
+.appendix-hero {
+  background: linear-gradient(165deg, var(--navy-900), var(--navy-700));
+  padding: calc(var(--header-height) + var(--space-3xl)) var(--space-xl) var(--space-2xl);
+  text-align: center;
+  color: var(--white);
+}
+
+.appendix-hero h1 {
+  color: var(--white);
+  margin-bottom: var(--space-sm);
+}
+
+.appendix-hero p {
+  color: var(--steel-300);
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.appendix-nav {
+  max-width: 1100px;
+  margin: calc(var(--space-xl) * -1) auto var(--space-2xl);
+  padding: 0 var(--space-xl);
+  position: relative;
+  z-index: 2;
+}
+
+.appendix-nav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-lg);
+}
+
+.appendix-nav-card {
+  display: block;
+  background: var(--white);
+  border: 1px solid var(--steel-100);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.appendix-nav-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--olive-500);
+}
+
+.appendix-nav-letter {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--olive-500);
+  margin-bottom: var(--space-sm);
+  text-align: left;
+}
+
+.appendix-nav-card h3 {
+  font-size: 1rem;
+  margin-bottom: var(--space-xs);
+}
+
+.appendix-nav-card p {
+  font-size: 0.85rem;
+  color: var(--steel-500);
+  margin: 0;
+  text-align: left;
+}
+
+.appendix-hub {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 var(--space-xl) var(--space-3xl);
+}
+
+.appendix-section {
+  max-width: var(--content-width);
+  margin: 0 auto var(--space-3xl);
+  padding: var(--space-2xl) var(--space-xl);
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  scroll-margin-top: calc(var(--header-height) + var(--space-lg));
+}
+
+.appendix-section p {
+  text-align: justify;
+  text-justify: inter-word;
+  text-indent: 2em;
+  line-height: 1.8;
+  margin-bottom: 0.8em;
+}
+
+.appendix-section li {
+  text-align: justify;
+  line-height: 1.75;
+}
+
+.appendix-section p.appendix-subtitle {
+  text-align: center;
+  text-indent: 0;
+  color: var(--olive-500);
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: var(--space-xl);
+}
+
+.appendix-section p.no-indent,
+.appendix-section .no-indent {
+  text-indent: 0;
+}
+
+.appendix-section .form-line {
+  font-family: var(--font-mono);
+  color: var(--graphite-600);
+  text-indent: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.chapter-title {
+  font-size: 1.8rem;
+  padding-bottom: var(--space-md);
+  margin-bottom: var(--space-xl);
+  border-bottom: 2px solid var(--navy-500);
+  text-align: center;
+}
+
+.block-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--graphite-700);
+  margin: var(--space-lg) 0 var(--space-sm);
+  text-indent: 0;
+}
+
+.appendix-back {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-xl);
+}
+
+.appendix-back a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border: 1px solid var(--steel-100);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+  background: var(--white);
+}
+
+.appendix-back a:hover {
+  border-color: var(--navy-500);
+  background: var(--steel-50);
+}
+
+@media (max-width: 768px) {
+  .appendix-hero {
+    padding: calc(var(--header-height) + var(--space-2xl)) var(--space-md) var(--space-xl);
+  }
+
+  .appendix-nav {
+    padding: 0 var(--space-md);
+  }
+
+  .appendix-hub {
+    padding: 0 var(--space-md) var(--space-2xl);
+  }
+
+  .appendix-section {
+    padding: var(--space-xl) var(--space-md);
+  }
+
+  .chapter-title {
+    font-size: 1.4rem;
+  }
+}

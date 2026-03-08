@@ -1,0 +1,3 @@
+/* Lightbox enhancements */
+.lightbox[aria-hidden="true"] { visibility: hidden; }
+.lightbox[aria-hidden="false"] { visibility: visible; }

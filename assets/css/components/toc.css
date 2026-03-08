@@ -1,0 +1,3 @@
+/* TOC enhancements */
+.sidebar-nav a[aria-current="true"] { color: var(--navy-700); border-left-color: var(--accent-gold); background: rgba(46, 80, 144, 0.06); }
+.toc-card:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 3px; }

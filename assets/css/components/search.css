@@ -1,0 +1,5 @@
+/* Search enhancements */
+.search-results[hidden] { display: none; }
+.search-result-item { display: grid; gap: 0.35rem; }
+.search-result-item a:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 2px; }
+.search-status { padding: 0 var(--space-lg) var(--space-sm); color: var(--steel-400); font-size: 0.75rem; font-family: var(--font-ui); }

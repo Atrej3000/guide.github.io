@@ -1,0 +1,729 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ==========================================================================
+   MoD Print Stylesheet — Official Standard
+   ========================================================================== */
+
+:root {
+  /* Core palette - Remapped to MoD Official Colors */
+  --navy-900: #161817; /* Deep Graphite/Black */
+  --navy-800: #1F2421; /* Dark Olive */
+  --navy-700: #2B352E; /* Medium Olive */
+  --navy-600: #38453C;
+  --navy-500: #4B5950;
+
+  --graphite-900: #111111;
+  --graphite-800: #222222;
+  --graphite-700: #333333;
+  --graphite-600: #444444;
+  --graphite-500: #555555;
+
+  --steel-500: #6B7280;
+  --steel-400: #9CA3AF;
+  --steel-300: #D1D5DB;
+  --steel-200: #E5E7EB;
+  --steel-100: #F3F4F6;
+  --steel-50:  #F9FAFB;
+
+  --white: #FFFFFF;
+  --off-white: #F4F5F6;
+
+  /* MoD Accents */
+  --accent-gold: #FFD500; /* MoD Yellow */
+  --accent-gold-muted: #E5BF00;
+
+  /* Typography */
+  --font-display: 'Montserrat', system-ui, sans-serif;
+  --font-body: 'Roboto', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-ui: 'Montserrat', system-ui, sans-serif;
+}
+
+/* ============ Base Reset ============ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body.print-body {
+  font-family: var(--font-body);
+  color: var(--graphite-800);
+  background: var(--white);
+  line-height: 1.6;
+  font-size: 11pt;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  padding-top: 0 !important;
+}
+
+/* ============ Print Toolbar (Screen Only) ============ */
+.print-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: var(--navy-900);
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2000;
+  font-family: var(--font-ui);
+}
+
+.print-toolbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Official Branding Integration - Білі логотипи */
+.brand-logo-outline,
+.brand-logo-shield {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white) !important; 
+}
+
+.brand-logo-outline svg,
+.brand-logo-shield svg {
+  display: block;
+}
+
+/* Світлий розділювач */
+.brand-divider {
+  width: 1px;
+  height: 32px;
+  background-color: rgba(255, 255, 255, 0.4); 
+  margin: 0 12px; 
+}
+
+/* Звичайний регістр, білий текст */
+.brand-text-mod {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-transform: none !important; 
+  color: var(--white) !important; 
+  letter-spacing: 0.02em;
+  text-align: left;
+}
+
+.manual-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--steel-300);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-left: 12px;
+  padding-left: 16px;
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Print Toolbar Actions */
+.print-toolbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.print-btn {
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 10px 20px;
+  border-radius: 2px;
+  cursor: pointer;
+  appearance: none;
+  transition: all 0.2s ease;
+}
+
+a.print-btn {
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+a.print-btn--primary { border-color: var(--accent-gold); }
+a.print-btn:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 2px; }
+
+.print-btn--primary {
+  background: var(--accent-gold);
+  color: var(--navy-900);
+  border: 1px solid var(--accent-gold);
+}
+
+.print-btn--primary:hover {
+  background: transparent;
+  color: var(--accent-gold);
+}
+
+.print-btn--secondary {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid var(--steel-500);
+}
+
+.print-btn--secondary:hover {
+  background: var(--navy-800);
+  border-color: var(--white);
+}
+
+@media screen and (max-width: 768px) {
+  .manual-name { display: none; }
+  .brand-text-mod { font-size: 0.85rem; }
+  .print-toolbar { padding: 0 16px; }
+  .brand-divider { margin: 0 8px; }
+}
+
+/* ============ Document Layout ============ */
+/* Main content: full width, no cards. Semantic structure: main > article > cover + book-body */
+body.print-body main {
+  display: block;
+  max-width: none;
+  width: 100%;
+  margin: 0;
+  padding: 0 24px;
+}
+
+body.print-body .book-document { display: block; max-width: none; width: 100%; margin: 0; padding: 0; }
+body.print-body .book-cover { margin-top: 80px; margin-bottom: 60px; }
+body.print-body .book-body { margin: 0; padding: 0; }
+body.print-body .book-body > .chapter-title,
+body.print-body .book-body > .chapter-image,
+body.print-body .book-body > .subsection-title,
+body.print-body .book-body > .block-title,
+body.print-body .book-body > p,
+body.print-body .book-body > .manual-list,
+body.print-body .book-body > .doc-list-numbered,
+body.print-body .book-body > .form-field,
+body.print-body .book-body > .doc-align-center,
+body.print-body .book-body > .doc-footer-signature,
+body.print-body .book-body > div {
+  max-width: none;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+body.print-body .book-body > .chapter-title { margin-top: 1.5em; margin-bottom: 0; }
+body.print-body .book-body > .chapter-title:first-of-type { margin-top: 0; }
+
+.print-title-page,
+.book-cover {
+  text-align: center;
+  padding: 80px 24px 100px;
+  page-break-after: always;
+  break-after: page;
+  max-width: 100%;
+}
+
+.print-title-page .mod-shield-wrap,
+.print-title-page .print-title-page__eyebrow,
+.print-title-page .chapter-title,
+.print-title-page .print-subtitle,
+.print-title-page .meta,
+.print-title-page .print-year {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mod-shield-wrap { margin-bottom: 40px; }
+
+.mod-shield {
+  width: 80px;
+  height: 80px;
+  color: var(--navy-900);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.print-title-page__eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--graphite-600);
+  margin-bottom: 2em;
+  text-indent: 0;
+  text-align: center;
+}
+
+.print-subtitle {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--graphite-800);
+  margin: 24px 0 48px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.print-title-page .meta,
+.book-cover .meta {
+  text-align: center;
+}
+
+.meta {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--graphite-800);
+  text-align: center;
+}
+
+.print-year { margin-top: 60px; text-align: center; }
+
+/* ============ Typography ============ */
+.chapter-title {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--navy-900);
+  text-align: center;
+  padding-bottom: 0.5em;
+  margin: 0 0 1.5em;
+  border-bottom: 2px solid var(--navy-900);
+  text-transform: uppercase;
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+.print-title-page .chapter-title {
+  text-align: center;
+  border-bottom: none;
+  font-size: 2.2rem;
+  margin-bottom: 0.5em;
+  padding-bottom: 0;
+}
+
+.subsection-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--navy-900);
+  margin: 2em 0 1em;
+  text-align: center;
+  text-transform: uppercase;
+  break-after: avoid;
+  page-break-after: avoid;
+  padding-left: 0;
+  border-left: none;
+}
+
+.block-title {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--navy-900);
+  margin: 1em 0 0.3em;
+  text-align: center;
+  text-transform: uppercase;
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+body.print-body p {
+  text-indent: 2em;
+  text-align: justify;
+  margin-bottom: 0.8em;
+  orphans: 3;
+  widows: 3;
+}
+
+.no-indent { text-indent: 0 !important; }
+
+/* ============ Lists ============ */
+.manual-list,
+.doc-list-numbered {
+  margin: 1em 0 1.5em;
+  padding: 0;
+  list-style: none;
+}
+
+.manual-list li,
+.doc-list-numbered li {
+  text-align: justify;
+  position: relative;
+  padding-left: 1.8em;
+  margin-bottom: 0.5em;
+  break-inside: avoid;
+}
+
+.manual-list li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--navy-900);
+  font-weight: 700;
+}
+
+.doc-list-numbered { counter-reset: manual-counter; }
+.doc-list-numbered li { counter-increment: manual-counter; }
+
+.doc-list-numbered li::before,
+.manual-list--numbered li::before {
+  content: counter(manual-counter) ".";
+  position: absolute;
+  left: 0;
+  color: var(--navy-900);
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+/* ============ Images & Tables ============ */
+.chapter-image {
+  margin: 2em 0;
+  break-inside: avoid;
+  page-break-inside: avoid;
+  text-align: center;
+}
+
+.chapter-image img {
+  max-width: 100%;
+  border-radius: 2px;
+  display: block;
+  margin: 0 auto;
+  border: 1px solid var(--steel-300);
+}
+
+.manual-table-wrap {
+  overflow-x: auto;
+  margin: 1.5em 0;
+}
+
+.manual-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  break-inside: auto;
+  border: 1px solid var(--steel-300);
+}
+
+.manual-table th,
+.manual-table td {
+  padding: 10px 14px;
+  border: 1px solid var(--steel-300);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.manual-table th {
+  background: var(--navy-900);
+  color: var(--white);
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.manual-table tr:nth-child(even) td { background: var(--off-white); }
+
+/* ============ Appendices / Forms ============ */
+.print-appendix { font-family: var(--font-body); }
+
+.appendix-label {
+  text-align: center;
+  color: var(--graphite-600);
+  font-style: italic;
+  margin-bottom: 1.5em;
+  text-indent: 0;
+}
+
+.doc-align-right { text-align: right; margin-left: auto; max-width: 300px; }
+.doc-align-center { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center !important; }
+.doc-align-center p, .doc-align-center h4 { text-align: center !important; text-indent: 0 !important; }
+
+.block-title.inline { display: inline-block; margin-right: 8px; margin-bottom: 0; text-align: left; }
+.uppercase { text-transform: uppercase; }
+.text-lg { font-size: 1.25rem; letter-spacing: 0.05em; }
+
+.form-field { margin-bottom: 1.5em; }
+.form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2em; }
+
+.field-line {
+  border-bottom: 1px solid var(--navy-900);
+  min-height: 20px;
+  width: 100%;
+  margin-bottom: 4px;
+}
+.field-line.multi-line { margin-bottom: 24px; }
+
+.doc-hint {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  color: var(--graphite-800);
+  text-align: center !important;
+  text-indent: 0 !important;
+  margin-top: 2px;
+}
+
+.doc-date { font-family: var(--font-mono); font-size: 0.9rem; margin-top: 8px; text-indent: 0 !important; }
+
+.doc-footer-signature { margin-top: 2.5em; page-break-inside: avoid; break-inside: avoid; }
+.signature-block { display: flex; align-items: flex-end; gap: 16px; }
+.signature-block .label { font-family: var(--font-ui); font-weight: 600; white-space: nowrap; margin-bottom: 16px; }
+.signature-line { border-bottom: 1px solid var(--navy-900); height: 16px; width: 100%; display: inline-block; }
+
+.doc-notice {
+  border: 1px solid var(--navy-900);
+  padding: 16px;
+  font-size: 0.85rem;
+  margin-top: 2em;
+  background: var(--off-white);
+}
+
+/* ============ Utilities ============ */
+.mb-2 { margin-bottom: 2em; }
+.mt-1 { margin-top: 1em; }
+.mt-2 { margin-top: 2em; }
+.mt-3 { margin-top: 3em; }
+.flex-1 { flex: 1; }
+
+.print-page-break {
+  page-break-before: always;
+  break-before: page;
+}
+
+/* ============ Screen Overrides ============ */
+@media screen {
+  body.print-body .book-cover { min-height: 50vh; }
+  body.print-body { background: var(--off-white); }
+}
+
+/* ============ Print Media Query ============
+   Applied only when user presses "Друкувати" (print/PDF). Screen view keeps narrow column. */
+@media print {
+  /* Kill any CSS variable that might constrain width */
+  :root {
+    --content-width: none;
+  }
+
+  @page {
+    size: A4;
+    margin: 8mm !important;
+  }
+
+  /* 1. ПРИХОВУЄМО ІНТЕРФЕЙС */
+  .site-header,
+  .reading-progress,
+  .manual-sidebar,
+  .sidebar-overlay,
+  .sidebar-toggle,
+  .site-footer,
+  .print-toolbar {
+    display: none !important;
+  }
+
+  /* 2. ЯДЕРНЕ СКИДАННЯ МАКЕТУ — контент на всю ширину сторінки */
+  html,
+  body,
+  body.print-body,
+  .manual-page,
+  .manual-main,
+  #manualContent,
+  .container {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    border: none !important;
+    box-shadow: none !important;
+    position: static !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  /* 3. Усі елементи — без обмеження ширини */
+  body.print-body * {
+    max-width: none !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Контент — без центрування (margin: auto), текст на всю ширину */
+  body.print-body .chapter-title,
+  body.print-body .subsection-title,
+  body.print-body .chapter-image,
+  body.print-body .chapter-image *,
+  body.print-body p,
+  body.print-body .manual-list,
+  body.print-body .doc-list-numbered,
+  body.print-body .form-field,
+  body.print-body .doc-align-center,
+  body.print-body .doc-footer-signature,
+  body.print-body .block-title {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  body.print-body img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* main, article, book-body — блок на всю ширину */
+  body.print-body main,
+  body.print-body .book-document,
+  body.print-body .book-cover,
+  body.print-body .book-body,
+  body.print-body .book-body > .chapter-title,
+  body.print-body .book-body > .chapter-image,
+  body.print-body .book-body > .subsection-title,
+  body.print-body .book-body > p,
+  body.print-body .book-body > .manual-list,
+  body.print-body .book-body > .doc-list-numbered,
+  body.print-body .book-body > div {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    position: static !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  body.print-body .chapter-title,
+  body.print-body .subsection-title,
+  body.print-body .chapter-image,
+  body.print-body .chapter-image img,
+  body.print-body p {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  /* Скидаємо базові стилі для паперу */
+  body.print-body,
+  body {
+    font-size: 12pt !important;
+    line-height: 1.5 !important;
+    background: var(--white) !important;
+    color: #000 !important;
+  }
+
+  /* Мінімальні відступи між блоками */
+  body.print-body .book-body > .chapter-title { margin-top: 1em !important; margin-bottom: 0.25em !important; }
+  body.print-body .book-body > .chapter-title:first-of-type { margin-top: 0 !important; }
+
+  /* Обкладинка — усе по центру */
+  .print-title-page,
+  .book-cover {
+    padding: 10mm 0 15mm !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  .print-title-page .mod-shield-wrap,
+  .print-title-page .print-title-page__eyebrow,
+  .print-title-page .chapter-title,
+  .print-title-page .print-subtitle,
+  .print-title-page .meta,
+  .print-title-page .print-year {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .print-title-page .chapter-title {
+    font-size: 2.4rem !important;
+  }
+
+  .print-subtitle {
+    font-size: 1.35rem !important;
+    max-width: none !important;
+  }
+
+  /* Щільніша верстка: менше вертикальних прогалин */
+  body.print-body .chapter-title {
+    font-size: 2rem !important;
+    border-bottom-color: #000 !important;
+    color: #000 !important;
+    margin: 0 0 0.5em !important;
+    padding-bottom: 0.25em !important;
+    text-align: center !important;
+  }
+
+  body.print-body .subsection-title {
+    font-size: 1.25rem !important;
+    color: #000 !important;
+    margin: 0.75em 0 0.35em !important;
+    padding-left: 0 !important;
+    border-left: none !important;
+    text-align: center !important;
+  }
+
+  body.print-body .block-title:not(.inline) {
+    text-align: center !important;
+  }
+
+  body.print-body p {
+    margin-bottom: 0.4em !important;
+  }
+
+  body.print-body .manual-list,
+  body.print-body .doc-list-numbered {
+    margin: 0.4em 0 0.6em !important;
+  }
+
+  body.print-body .manual-list li,
+  body.print-body .doc-list-numbered li {
+    margin-bottom: 0.25em !important;
+  }
+
+  body.print-body .chapter-image {
+    margin: 0.6em 0 !important;
+  }
+
+  body.print-body hr,
+  body.print-body .manual-table-wrap {
+    margin: 0.5em 0 !important;
+  }
+
+  body.print-body hr {
+    border: none !important;
+    border-top: 1px solid #ccc !important;
+  }
+
+  /* Print Tables */
+  .manual-table th { background: #f0f0f0 !important; color: #000 !important; border-color: #000 !important; }
+  .manual-table td { border-color: #000 !important; }
+  
+  /* 4. ПРАВИЛА РОЗРИВУ СТОРІНОК */
+  .manual-table thead { display: table-header-group; }
+  .manual-table tr, .manual-table td, .manual-table th { break-inside: avoid; page-break-inside: avoid; }
+  .chapter-title, .subsection-title, .block-title, .chapter-image, .manual-list, .doc-list-numbered, .signature-block {
+    break-inside: avoid; page-break-inside: avoid;
+  }
+}

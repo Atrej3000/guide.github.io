@@ -1,0 +1,355 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Montserrat:wght@600;700;800&display=swap");
+
+@page {
+  size: A4;
+  margin: 18mm 16mm 18mm 16mm;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body {
+  font-family: "Merriweather", Georgia, serif;
+  color: #1a1d23;
+  line-height: 1.75;
+  font-size: 11pt;
+  background: white;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.print-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #0b1929;
+  color: white;
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  font-family: "Montserrat", sans-serif;
+}
+
+.print-toolbar button {
+  background: linear-gradient(135deg, #c4a44a, #b8a76c);
+  color: #0b1929;
+  border: none;
+  padding: 8px 24px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.print-toolbar button:hover {
+  box-shadow: 0 4px 16px rgba(196, 164, 74, 0.3);
+}
+
+.print-content {
+  max-width: 800px;
+  margin: 80px auto 60px;
+  padding: 0 24px;
+}
+
+.print-title-page {
+  text-align: center;
+  padding: 100px 0;
+  page-break-after: always;
+  break-after: page;
+}
+
+.print-title-page h1 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2rem;
+  margin-bottom: 0.5em;
+  color: #0f2340;
+  line-height: 1.2;
+}
+
+.print-title-page h2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.3rem;
+  color: #4a5164;
+  font-weight: 600;
+  margin-bottom: 2em;
+  line-height: 1.35;
+}
+
+.print-title-page .meta {
+  font-size: 0.95rem;
+  color: #6b7a8d;
+  text-align: center;
+}
+
+.print-chapter {
+  margin-bottom: 2.5em;
+  break-inside: auto;
+}
+
+.print-chapter h2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.3rem;
+  color: #0f2340;
+  text-align: center;
+  padding-bottom: 0.5em;
+  margin: 0 0 1.5em;
+  border-bottom: 2px solid #2e5090;
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+.print-chapter h3,
+.print-chapter .subsection-title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.05rem;
+  color: #152e50;
+  margin: 1.5em 0 0.5em;
+  text-align: center;
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+.print-chapter h4,
+.print-chapter .block-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 1em 0 0.3em;
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+.print-chapter p {
+  text-indent: 2em;
+  text-align: justify;
+  margin-bottom: 0.6em;
+  orphans: 3;
+  widows: 3;
+}
+
+.print-chapter p.no-indent,
+.print-chapter .no-indent,
+.print-title-page p,
+.print-chapter td p,
+.print-chapter th p {
+  text-indent: 0;
+}
+
+.print-chapter ul,
+.print-chapter ol {
+  margin: 0.5em 0 0.8em;
+  padding: 0;
+}
+
+.print-chapter ul.manual-list,
+.print-chapter ol.manual-list {
+  list-style: none;
+}
+
+.print-chapter ul.manual-list li,
+.print-chapter ol.manual-list li,
+.print-chapter li {
+  text-align: justify;
+  position: relative;
+  padding-left: 1.5em;
+  margin-bottom: 0.3em;
+  break-inside: avoid;
+}
+
+.print-chapter ul.manual-list li::before,
+.print-chapter li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: #6e7f4a;
+}
+
+.print-chapter .manual-list--numbered {
+  counter-reset: manual-counter;
+}
+
+.print-chapter .manual-list--numbered li {
+  counter-increment: manual-counter;
+}
+
+.print-chapter .manual-list--numbered li::before {
+  content: counter(manual-counter) ")";
+  color: #2e5090;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+}
+
+.print-chapter img {
+  max-width: 100%;
+  margin: 1em auto;
+  border-radius: 8px;
+  display: block;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.print-chapter table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+  font-size: 0.9rem;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.print-chapter th,
+.print-chapter td {
+  padding: 8px 12px;
+  border: 1px solid #d4dae3;
+  text-align: left;
+  vertical-align: top;
+}
+
+.print-chapter th {
+  background: #0f2340;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.print-chapter blockquote {
+  border-left: 3px solid #2e5090;
+  padding-left: 1em;
+  margin: 1em 0;
+  color: #3a404d;
+}
+
+.print-page-break {
+  page-break-before: always;
+  break-before: page;
+}
+
+@media screen {
+  .print-content {
+    box-shadow: 0 0 0 1px #e5e7eb;
+    background: white;
+  }
+}
+
+@media print {
+  body {
+    font-size: 10.5pt;
+    background: white;
+  }
+
+  .print-toolbar {
+    display: none !important;
+  }
+
+  .print-content {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .print-chapter a::after {
+    content: none !important;
+  }
+
+  .print-chapter h2,
+  .print-chapter h3,
+  .print-chapter h4,
+  .print-chapter img,
+  .print-chapter table,
+  .print-chapter ul,
+  .print-chapter ol {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
+
+/* Refactor additions */
+.print-toolbar__title {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.print-toolbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.print-toolbar__button {
+  appearance: none;
+  border: none;
+  border-radius: 4px;
+}
+
+.print-toolbar__button--secondary {
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.print-title-page__eyebrow {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #6b7a8d;
+  margin-bottom: 2em;
+}
+
+.print-title-page__year {
+  margin-top: 3em;
+}
+
+.print-image {
+  max-width: 100%;
+  margin: 1em 0;
+  border-radius: 8px;
+}
+
+@media screen {
+  .print-chapter {
+    padding-bottom: 0.25rem;
+  }
+}
+
+@media print {
+  .print-title-page {
+    min-height: calc(297mm - 36mm);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .print-chapter table thead {
+    display: table-header-group;
+  }
+
+  .print-chapter tr,
+  .print-chapter td,
+  .print-chapter th {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}

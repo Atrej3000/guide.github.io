@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Montserrat:wght@600;700;800&display=swap");
+
+:root {
+  /* Core palette */
+  --navy-900: #0B1929;
+  --navy-800: #0F2340;
+  --navy-700: #152E50;
+  --navy-600: #1B3A63;
+  --navy-500: #2E5090;
+
+  --graphite-900: #1A1D23;
+  --graphite-800: #23272F;
+  --graphite-700: #2D323C;
+  --graphite-600: #3A404D;
+  --graphite-500: #4A5164;
+
+  --steel-500: #5C6778;
+  --steel-400: #6B7A8D;
+  --steel-300: #8E9AAD;
+  --steel-200: #B0BAC9;
+  --steel-100: #D4DAE3;
+  --steel-50: #EDF0F4;
+
+  --olive-600: #5C6B3C;
+  --olive-500: #6E7F4A;
+  --olive-400: #8A9D62;
+  --olive-300: #A8B882;
+  --olive-100: #E8EDDF;
+
+  --white: #FFFFFF;
+  --off-white: #F7F8FA;
+  --warm-white: #FAFBFC;
+
+  --accent-blue: #3B82C4;
+  --accent-gold: #C4A44A;
+  --accent-gold-muted: #B8A76C;
+
+  --danger: #C53030;
+  --success: #2F855A;
+
+  /* Typography */
+  --font-display: 'Montserrat', system-ui, sans-serif;
+  --font-body: 'Merriweather', Georgia, serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-ui: 'Montserrat', system-ui, sans-serif;
+
+  /* Spacing scale */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+  --space-5xl: 8rem;
+
+  /* Layout */
+  --content-width: 780px;
+  --sidebar-width: 300px;
+  --header-height: 64px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(11,25,41,0.08);
+  --shadow-md: 0 4px 12px rgba(11,25,41,0.1);
+  --shadow-lg: 0 8px 30px rgba(11,25,41,0.12);
+  --shadow-xl: 0 20px 60px rgba(11,25,41,0.15);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+  --transition-smooth: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Borders */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+}
